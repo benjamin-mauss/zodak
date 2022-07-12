@@ -1,0 +1,23 @@
+aprender sobre time scheduling e serviços
+
+
+- acabei de decidir que salvar as face_ids e imagens no banco vai ser melhor
+- daí faz um loop pela turma
+
+
+{
+    basicamente eu quero chamar o arquivo em python nos horários de aula
+    ele vai olhar o horário e ver o período corresponde, daí pegar a turma que tem aula
+
+    como o face_id é algo pequeno e tem poucos alunos por turma, carrega os alunos da turma na RAM
+    daí ele pega todos os alunos dessa turma e compara os face_ids em um loop de while (periodo não acaba) OR todos alunos presentes (não tem PORQUÊ gastar processamento identificando se todos já estão lá)
+    
+    ao detectar, já vai salvando no banco de dados a presença em tempo real, pra no caso de falhas n perder presença
+
+
+    se pá tem que fazer um algoritmo pra detectar quantas vezes um aluno aparece
+        e só confirmar que ele é ele mesmo depois de X vezes que apareceu,
+        afim de evitar aqueles flick de detecção erradas
+
+
+}

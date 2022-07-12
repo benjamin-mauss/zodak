@@ -1,0 +1,30 @@
+fazer todo o backend em PHP, junto com o front
+
+
+
+toda a comunicação POST deve ser feita usando application/x-www-form-urlencoded
+cuidar com sql injection, xss, csrf, broken authentication
+middleware checando se a sessão tá autenticada
+
+/login
+    GET - se não estiver autenticado, mandar pra cá
+    POST - faz login do admin
+
+/turmas
+    GET - lista as turmas, no front aparecendo opção para adicionar/remover turmar
+    POST - dá pra adicionar nova turma
+/turma/[ID_TURMA]
+    GET - lista os alunos da turma
+    POST - dá pra editar a turma (nome, ano e alunos)
+    DELETE - remove a turma
+
+/alunos
+    GET - lista todos os alunos
+    GET - dá pra pesquisar alunos (usando o LIKE no mysql), usando o parâmetro 'q', ex: ?q=benjamin
+    POST - dá pra criar alunos. Tem que enviar a imagem dele em base64.
+/aluno/[ID_ALUNO]
+    GET - dá pra ver todas as características do aluno, bem como a presença dele nas aulas
+    POST - modificar dá pra editar (nome, turma, matricula, imagem, presença)
+
+/horarios
+    GET/POST - dá pra ver todos os horários/períodos e modificar as turmas (numa table editável fica mais fácil)
