@@ -1,4 +1,9 @@
 aprender sobre time scheduling e serviços
+-> crontab -e 
+-> minuto hora_dia dia_do_mes mes_do_ano dia_da_semana
+-> * * * * QUA
+-> https://crontab.guru/every-monday
+
 
 
 - acabei de decidir que salvar as face_ids e imagens no banco vai ser melhor
@@ -7,7 +12,7 @@ aprender sobre time scheduling e serviços
 
 {
     basicamente eu quero chamar o arquivo em python nos horários de aula
-    ele vai olhar o horário e ver o período corresponde, daí pegar a turma que tem aula
+    ele vai olhar o horário e dia, ver o período corresponde e daí pegar a turma que tem aula
 
     como o face_id é algo pequeno e tem poucos alunos por turma, carrega os alunos da turma na RAM
     daí ele pega todos os alunos dessa turma e compara os face_ids em um loop de while (periodo não acaba) OR todos alunos presentes (não tem PORQUÊ gastar processamento identificando se todos já estão lá)
