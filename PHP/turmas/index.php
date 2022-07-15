@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])){
-    header("Location: /login?r=Nao_logado");
+    header("Location: /v1/login?r=Nao_logado");
     die();
 }
 
