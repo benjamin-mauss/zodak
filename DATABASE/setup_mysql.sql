@@ -2,8 +2,7 @@
 create database zodak;
 
 use zodak;
-
-CREATE TABLE admin (
+CREATE TABLE admins (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nome VARCHAR(256) NOT NULL,
     matricula VARCHAR(256),
@@ -25,7 +24,6 @@ CREATE TABLE horarios (
     dia_semana INT
 );
 
-
 CREATE TABLE faces (
     id INT AUTO_INCREMENT PRIMARY KEY,
     face BLOB(2048),
@@ -44,9 +42,7 @@ CREATE TABLE alunos (
         REFERENCES faces (id)
 );
 
-
-
-CREATE TABLE presenca (
+CREATE TABLE presencas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_aluno INT,
     FOREIGN KEY (id_aluno)
@@ -56,8 +52,5 @@ CREATE TABLE presenca (
         REFERENCES horarios (id),
     present BOOL DEFAULT FALSE
 );
-
-
-
 
 
