@@ -41,6 +41,7 @@ if($_POST){
 
 <table border="1px" contenteditable="true" id=table>
     <tr>
+        <th>ativo</th>
         <th>id</th>
         <th>Nome</th>
         <th>Grade</th>
@@ -60,6 +61,8 @@ if($_POST){
         $nome = $row["nome"];
         $grade = $row["grade"];
         echo("<tr>
+        
+        <td><input type='checkbox' id='$id' name='ativo' checked></td>
         <td>$id</td>
         <td>$nome</td>
         <td>$grade</td>
@@ -84,9 +87,10 @@ if($_POST){
         
         for(var i = 1; i < rows.length; i++){
             var cells = rows[i].getElementsByTagName("td");
-            var id = cells[0].textContent;
-            var name = cells[1].textContent;
-            var grade = cells[2].textContent;
+            var ativo = cells[0].firstChield;
+            var id = cells[2].textContent;
+            var name = cells[2].textContent;
+            var grade = cells[3].textContent;
             values.push({id: id, name: name, grade: grade});
         }
 
@@ -96,6 +100,17 @@ if($_POST){
         xhttp.open("POST", "/v1/turmas/att.php");
         xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhttp.send(JSON.stringify(values));
+
+
+        for(var i = 1; i < rows.length; i++){
+            var cells = rows[i].getElementsByTagName("td");
+            var id = cells[0].textContent;
+            var name = cells[1].textContent;
+            var grade = cells[2].textContent;
+            values.push({id: id, name: name, grade: grade});
+        }
+
+
     }
 </script>
 

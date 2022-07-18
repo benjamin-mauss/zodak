@@ -6,9 +6,9 @@ if (!isset($_SESSION['id'])){
 }
 $big_data = json_decode(file_get_contents('php://input'), true);
 if($big_data){
+    require_once("../database/connect.php");
     foreach( $big_data as $data){
         if(strlen($data['grade']) > 0 && strlen($data['name']) > 0  && strlen($data['id']) > 0){
-            require_once("../database/connect.php");
             $a = $data["grade"];
             $b = $data["name"];
             $c = $data["id"];

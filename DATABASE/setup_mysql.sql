@@ -55,7 +55,8 @@ CREATE TABLE presencas (
     FOREIGN KEY (id_horario)
         REFERENCES horarios (id),
     present BOOL DEFAULT FALSE,
-    dia date
+    dia date,
+    materia varchar(100)
 );
 
 
