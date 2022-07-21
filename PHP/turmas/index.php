@@ -1,9 +1,26 @@
+
+
+
 <?php
 session_start();
 if (!isset($_SESSION['id'])){
     header("Location: /v1/login?r=Nao_logado");
     die();
 }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<?php
 
 if($_POST){
     if(strlen($_POST['grade']) > 0 && strlen($_POST['nome']) > 0){
@@ -62,8 +79,8 @@ if($_POST){
         $grade = $row["grade"];
         echo("<tr>
         
-        <td><input type='checkbox' id='$id' name='ativo' checked></td>
-        <td>$id</td>
+        <td contenteditable=false><input type='checkbox' id='$id' name='ativo' checked></td>
+        <td contenteditable=false>$id</td>
         <td>$nome</td>
         <td>$grade</td>
         </tr>");
@@ -85,13 +102,19 @@ if($_POST){
         var rows = table.getElementsByTagName("tr");
         var values = []; // {id: value, name: value, grade: value}
         
+        // del array
+        var del_array = [];
+
         for(var i = 1; i < rows.length; i++){
             var cells = rows[i].getElementsByTagName("td");
-            var ativo = cells[0].firstChield;
-            var id = cells[2].textContent;
+            var ativo = cells[0].firstChild.checked;
+            var id = cells[1].textContent;
             var name = cells[2].textContent;
             var grade = cells[3].textContent;
             values.push({id: id, name: name, grade: grade});
+            if(!ativo){
+                del_array.push(id);
+            }
         }
 
         // sends values to att.php
@@ -101,15 +124,15 @@ if($_POST){
         xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhttp.send(JSON.stringify(values));
 
-
-        for(var i = 1; i < rows.length; i++){
-            var cells = rows[i].getElementsByTagName("td");
-            var id = cells[0].textContent;
-            var name = cells[1].textContent;
-            var grade = cells[2].textContent;
-            values.push({id: id, name: name, grade: grade});
+        // deletes the rows that are not checked
+        if(del_array.length > 0 && confirm("Deseja deletar as turmas desmarcadas?")){
+            var xhttp2 = new XMLHttpRequest();
+            xhttp2.open("POST", "/v1/turmas/del.php");
+            xhttp2.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhttp2.send(JSON.stringify(del_array));
         }
-
+        
+        location.href = ("/v1/turmas?r=Atualizou");
 
     }
 </script>
@@ -117,11 +140,6 @@ if($_POST){
 <br><br><br>
 
 
-litar as turmas aqui em uma table toscona
-/turmas
-    GET - lista as turmas, no front aparecendo opção para adicionar/remover turmar
-    POST - dá pra adicionar nova turma
-/turma/[ID_TURMA]
-    GET - lista os alunos da turma
-    POST - dá pra editar a turma (nome, ano e alunos)
-    DELETE - remove a turma
+
+    </body>
+</html>
