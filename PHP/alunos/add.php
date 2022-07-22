@@ -39,8 +39,8 @@ if($_POST){
     }
     
     $row = mysqli_fetch_assoc($q);
-    $id= $row["auto_increment"];
-    
+    $id= $row["Auto_increment"];
+    echo("id is " . $id);
     
     $target_file = $target_dir . basename($id . ".png");
 
