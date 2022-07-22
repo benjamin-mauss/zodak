@@ -26,3 +26,9 @@ aprender sobre time scheduling e serviços
 
 
 }
+
+
+
+setup:
+# use sudo to make sure it install to user DAEMON
+sudo pip3 install cmake face-recognition opencv-python numpy

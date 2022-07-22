@@ -18,8 +18,10 @@ if (!isset($_SESSION['id'])){
     <title>Document</title>
 </head>
 <body>
-    
 
+<a href="/v1/alunos">alunos</a><br>
+<a href="/v1/turmas">turmas</a><br>
+<a href="/v1/alunos/add.php">adicionar novo aluno</a><br>
 <?php
 
 if($_POST){
@@ -28,7 +30,7 @@ if($_POST){
         require_once("../database/connect.php");
         $a = $_POST["grade"];
         $b = $_POST["nome"];
-        echo("INSERT INTO zodak.turmas values (NULL, $a, $b)");
+        
         $q = mysqli_query($conn, "INSERT INTO zodak.turmas values (NULL, '$a', '$b')");
         header("Location: /v1/turmas?r=Incluiu");
         die();
@@ -48,6 +50,8 @@ if($_POST){
         width:100%;
     }
 </style>
+
+<h2>Adicione uma turma nova:</h2>
 <form action="" method="post">
 <br>
     <input type="text" name="nome" id="nome" placeholder="nome"><br>
@@ -55,9 +59,9 @@ if($_POST){
     <button type="submit">adicionar</button>
 </form>
 
-
+<h2>Veja, edite ou delete a turmas:</h2>
 <table border="1px" contenteditable="true" id=table>
-    <tr>
+    <tr  contenteditable="false">
         <th>ativo</th>
         <th>id</th>
         <th>Nome</th>
@@ -123,16 +127,27 @@ if($_POST){
         xhttp.open("POST", "/v1/turmas/att.php");
         xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhttp.send(JSON.stringify(values));
+        xhttp.onreadystatechange = function () {
+                if(xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {         
+                    // deletes the rows that are not checked
+                    if(del_array.length > 0 && confirm("Deseja deletar as turmas desmarcadas?")){
+                        var xhttp2 = new XMLHttpRequest();
+                        xhttp2.open("POST", "/v1/turmas/del.php");
+                        xhttp2.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                        xhttp2.send(JSON.stringify(del_array));
+                        xhttp2.onreadystatechange = function () {
+                            if(xhttp2.readyState === XMLHttpRequest.DONE && xhttp2.status === 200) {         
+                                    location.href = ("/v1/turmas?r=Atualizou");     
+                            }
+                        };
+                    }else{
+                        location.href = ("/v1/turmas?r=Atualizou");
+                    }
+                }
+            };
 
-        // deletes the rows that are not checked
-        if(del_array.length > 0 && confirm("Deseja deletar as turmas desmarcadas?")){
-            var xhttp2 = new XMLHttpRequest();
-            xhttp2.open("POST", "/v1/turmas/del.php");
-            xhttp2.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhttp2.send(JSON.stringify(del_array));
-        }
         
-        location.href = ("/v1/turmas?r=Atualizou");
+        
 
     }
 </script>
