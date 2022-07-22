@@ -22,7 +22,7 @@ if (!isset($_SESSION['id'])){
 
 <a href="/v1/alunos">alunos</a><br>
 <a href="/v1/turmas">turmas</a><br>
-<a href="/v1/presencas">presenças</a><br>
+<a href="/v1/alunos/presenca.php">presença</a><br>
 <br><br><br>   
 
 <h2>pesquisa</h2>
@@ -33,6 +33,9 @@ if (!isset($_SESSION['id'])){
     until: <input type="date" name="until" id="until"><br> 
     <button type="submit">pesquisar</button>
 </form>
+<br>    
+n é preciso adição manual pq o proprio algoritmo do python adiciona faltas e presenças automaticamente <br>
+
 
 
 <h2>Veja, delete ou edite as presenças</h2>
@@ -52,18 +55,19 @@ if (!isset($_SESSION['id'])){
 
 <?php
 
-    // vai dá pra ver a presença de todos os alunos
-    // dá pra alterar também
-    // futuramente, se pá, daria pra exportar pro suap, excel, etc.
-    // a presença vai ser dado pelo algoritmo de reconhecimento facial em python
-
-    // dia_semana 0 - 6, domingo à sábado
-    // periodo de aula 0-5, do primeiro ao último
-    // se pá que eu precisava do horário de início e fim do período de aula
+    
     require_once("../database/connect.php");
+
+
+
+
+
     if($_POST){
 
     }
+
+
+
 
     $sql = "SELECT 
                 p.id AS id_p,
@@ -111,22 +115,35 @@ if (!isset($_SESSION['id'])){
     $row = mysqli_fetch_assoc($q);
     while($row){
         echo("<tr>");
-        echo("<td>".$row['id_p']."</td>");
+        echo("<td>".$row['id_p']."</td>\n");
         // echo("<td>".$row['id_a']."</td>");
         // echo("<td>".$row['id_t']."</td>");
-        echo("<td>".$row['nome']."</td>");
-        echo("<td>".$row['matricula']."</td>");
-        echo("<td>".$row['turma']."</td>");
-        echo("<td>".$row['periodo']."</td>");
-        echo("<td>".$row['_date']."</td>");
-        echo("<td>".$row['inicio']."</td>");
-        echo("<td>".$row['fim']."</td>");
-        echo("<td contenteditable=true>".$row['present']."</td>");
+        echo("<td>".$row['nome']."</td>\n");
+        echo("<td>".$row['matricula']."</td>\n");
+        echo("<td>".$row['turma']."</td>\n");
+        echo("<td>".$row['periodo']."</td>\n");
+        echo("<td>".$row['_date']."</td>\n");
+        echo("<td>".$row['inicio']."</td>\n");
+        echo("<td>".$row['fim']."</td>\n");
+        echo("<td contenteditable=false>"."<input type='checkbox' class='checks' name='present' ". ($row['present'] == 1? "checked" : "" )."></td>\n");
         echo("</tr>");
         $row = mysqli_fetch_assoc($q);
     }
 
 ?>
-
+<script>
+    var checks = document.getElementsByClassName("checks");
+    for(check of checks){
+        check.addEventListener("click", function(){
+            var id = this.parentNode.parentNode.firstChild.innerHTML;
+            var present = this.checked;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/v1/alunos/att_presenca.php", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(JSON.stringify({id: id, present: present}));
+            
+        });
+    }
+</script>
 </body>
 </html>

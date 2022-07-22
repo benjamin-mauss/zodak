@@ -21,7 +21,8 @@ if (!isset($_SESSION['id'])){
 
 <a href="/v1/alunos">alunos</a><br>
 <a href="/v1/turmas">turmas</a><br>
-<a href="/v1/alunos/add.php">adicionar novo aluno</a><br>
+<a href="/v1/horarios">horarios</a><br>
+
 <?php
 
 if($_POST){

@@ -28,6 +28,7 @@ if (!isset($_SESSION['id'])){
 
 <a href="/v1/alunos">alunos</a><br>
 <a href="/v1/turmas">turmas</a><br>
+<a href="/v1/horarios">horarios</a><br>
 <a href="add.php">adicionar novo aluno</a><br>
 <a href="presenca.php">presença</a>
 
