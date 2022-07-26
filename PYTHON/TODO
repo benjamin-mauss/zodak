@@ -1,21 +1,22 @@
 aprender sobre time scheduling e serviços
--> crontab -e 
+-> crontab -e
 -> minuto hora_dia dia_do_mes mes_do_ano dia_da_semana
 -> * * * * QUA
 -> https://crontab.guru/every-monday
+
 
 
 - daí faz um loop pela turma
 
 
 {
-    basicamente eu quero chamar o arquivo em python nos horários de aula
-    ele vai olhar o horário e dia, ver o período corresponde e daí pegar a turma que tem aula
+    basicamente eu quero chamar o arquivo em python nos horários de aula - vai ser feito pelo crontab
 
-    como o face_id é algo pequeno e tem poucos alunos por turma, carrega os alunos da turma na RAM
-    daí ele pega todos os alunos dessa turma e compara os face_ids em um loop de while (periodo não acaba) OR todos alunos presentes (não tem PORQUÊ gastar processamento identificando se todos já estão lá)
-    
-    ao detectar, já vai salvando no banco de dados a presença em tempo real, pra no caso de falhas n perder presença
+    1- ele vai olhar o horário e dia, ver o período corresponde e daí pegar a turma que tem aula - dá pra usar o NOW na database e achar :3
+
+    2- como o face_id é algo pequeno e tem poucos alunos por turma, carrega os alunos da turma na RAM - select * from alunos where id_turma = turma_atual_que_peguei_no_passo_1; daí carregar o faces_encodes usando a função load_face_encoding
+    3- daí ele pega todos os alunos dessa turma e compara os face_ids em um loop de while (periodo não acaba) OR todos alunos presentes (não tem PORQUÊ gastar processamento identificando se todos já estão lá). parar processamento de um aluno quando dar presença pra ele :3
+    4- ao detectar, já vai salvando no banco de dados a presença em tempo real, pra no caso de falhas n perder presença
 
 
     se pá tem que fazer um algoritmo pra detectar quantas vezes um aluno aparece
@@ -25,8 +26,11 @@ aprender sobre time scheduling e serviços
 
 }
 
+fazer uma função que atualiza o crontab quando o zodak.horarios.inicio for alterado
+    `-> isso no php, no arquivo /v1/horarios/att.php, provavelmente vai usar shell
 
+fazer arquivo de setup
 
 setup:
 # use sudo to make sure it install to user DAEMON
-sudo pip3 install cmake face-recognition opencv-python numpy
+    sudo pip3 install cmake face-recognition opencv-python numpy
