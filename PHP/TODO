@@ -7,9 +7,6 @@ cuidar com sql injection, xss, csrf, broken authentication - KKKKKKKKK MEME NÉ
 middleware checando se a sessão tá autenticada
 
 
-/horarios
-    GET/POST - dá pra ver todos os horários/períodos e modificar as turmas (numa table editável fica mais fácil)
-
 sudo systemctl stop mysql.service &&
 sudo lsyncd -delay 1 -rsync /home/benjamin/Documents/Projetos-II/PHP/ /opt/lampp/htdocs/v1 &&
 sudo /opt/lampp/wamp start;
