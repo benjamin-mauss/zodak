@@ -7,4 +7,4 @@ import time
 # conectar com o banco de dados para pegar os dados
 # rodar até acabar o perído
 
-ms.connect()
+ms.connect(host='localhost', user='root', passwd='', db='zodak')

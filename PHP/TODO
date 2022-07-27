@@ -9,4 +9,4 @@ middleware checando se a sessão tá autenticada
 
 sudo systemctl stop mysql.service &&
 sudo lsyncd -delay 1 -rsync /home/benjamin/Documents/Projetos-II/PHP/ /opt/lampp/htdocs/v1 &&
-sudo /opt/lampp/wamp start;
+sudo /opt/lampp/xampp start;
