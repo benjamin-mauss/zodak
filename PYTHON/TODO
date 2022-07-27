@@ -33,4 +33,4 @@ fazer arquivo de setup
 
 setup:
 # use sudo to make sure it install to user DAEMON
-    sudo pip3 install cmake face-recognition opencv-python numpy
+    sudo pip3 install cmake face-recognition opencv-python numpy mysql-connector-python
