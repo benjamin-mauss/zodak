@@ -18,7 +18,8 @@
 --
 -- Table structure for table `admins`
 --
-
+CREATE DATABASE zodak;
+USE zodak;
 DROP TABLE IF EXISTS `admins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;

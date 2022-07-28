@@ -23,6 +23,10 @@ if (!isset($_SESSION['id'])){
 <a href="/v1/alunos">alunos</a><br>
 <a href="/v1/turmas">turmas</a><br>
 <a href="/v1/horarios">horarios</a><br>
+
+na vdd tem mesmo que fazer algo pra add e remover horarios <br>
+lembrar que são os horários da semana, ou seja, uns 30 <br>
+fazer group by dia_semana e order by horario
 <?php
 
 if($_POST){
@@ -52,7 +56,6 @@ if($_POST){
     }
 </style>
 
-os horários já são adicionados 6 por padrão no banco e tá mec
 
 <h2>Veja, edite ou delete os horarios:</h2>
 <table border="1px" contenteditable="true" id=table>
