@@ -61,14 +61,19 @@ row = cursor.fetchone()
 # e usar o proprio array alunos_turma
 # alunos_ainda_nao_presentes = []
 
+# has the same index of the alunos_turma array
+face_encodes = []
+
 while row:
     print("aluno: ", row[1])
     aluno = {
         "id": row[0],
-        "nome"  : row[1],
-        "face_encode": np.load("/opt/lampp/htdocs/uploads/faces_encodes/" + str(row[0]) + ".npy", allow_pickle=True)
+        "nome"  : row[1] ,
+        "vezes_detectado": 0
     }
     alunos_turma.append(aluno)
+    face_encodes.append(np.load("/opt/lampp/htdocs/uploads/faces_encodes/" + str(row[0]) + ".npy", allow_pickle=True))
+    
     # alunos_ainda_nao_presentes.append(aluno["id"])
     row = cursor.fetchone()
 
@@ -82,15 +87,17 @@ for aluno in alunos_turma:
 cursor.execute("commit")
 
 
-
-# while it's not the end of the period
-while(now < end_time):
+l = len(alunos_turma)
+# while it's not the end of the period 
+# or if all the alunos are present
+while (now < end_time) or l == 0:
     # here we make the attendance check by comparing the face encodings of the students with the face encodings of the faces in the camera
     
     
     print(now)
     
     now = datetime.datetime.now()
+    l = len(alunos_turma)
 print("fimm")
 
 
