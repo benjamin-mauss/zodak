@@ -4,6 +4,9 @@ aprender sobre time scheduling e serviços
 -> * * * * QUA
 -> https://crontab.guru/every-monday
 
+sudo crontab -u daemon -e # edita o crontab do usuário daemon
+sudo /etc/init.d/crond restart  # make sure it will restart
+
 
 
 - daí faz um loop pela turma

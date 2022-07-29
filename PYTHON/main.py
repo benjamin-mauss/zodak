@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 import datetime
 import face_recognition
 import numpy as np
@@ -65,7 +66,7 @@ row = cursor.fetchone()
 known_face_encodings = []
 
 while row:
-    print("aluno: ", row[1])
+    # print("aluno: ", row[1])
     aluno = {
         "id": row[0],
         "nome"  : row[1] ,
@@ -83,7 +84,7 @@ while row:
 # pra depois dar alter table nos presentes (dentro do while)
 # for separado por causa do cursor.execute 
 for aluno in alunos_turma:
-    cursor.execute("insert into presencas (id_aluno, id_horario, present, _data) values (%s, %s, %s, %s)", (aluno["id"], id_horario, 0, now.strftime("%Y-%m-%d")))
+    cursor.execute("insert IGNORE into presencas (id_aluno, id_horario, present, _data) values (%s, %s, %s, %s)", (aluno["id"], id_horario, 0, now.strftime("%Y-%m-%d")))
 cursor.execute("commit")
 
 
@@ -134,7 +135,7 @@ while now < end_time and l != 0:
             
             if face_distances[best_match_index] < 0.55: # and alunos_turma[best_match_index] in alunos_turma:
 
-                print(alunos_turma[best_match_index])
+                # print(alunos_turma[best_match_index])
                 id = alunos_turma[best_match_index]["id"]
                 # removing both face and aluno from the list
                 alunos_turma.pop(best_match_index)

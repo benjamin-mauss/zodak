@@ -121,6 +121,8 @@ CREATE TABLE `presencas` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+ALTER TABLE zodak.presencas ADD UNIQUE `unique_presence`(`id_aluno`, `id_horario`, `_data`);
+
 --
 -- Dumping data for table `presencas`
 --
@@ -166,3 +168,4 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2022-07-27  9:03:02
+
