@@ -62,7 +62,7 @@ row = cursor.fetchone()
 # alunos_ainda_nao_presentes = []
 
 # has the same index of the alunos_turma array
-face_encodes = []
+known_face_encodings = []
 
 while row:
     print("aluno: ", row[1])
@@ -72,7 +72,7 @@ while row:
         "vezes_detectado": 0
     }
     alunos_turma.append(aluno)
-    face_encodes.append(np.load("/opt/lampp/htdocs/uploads/faces_encodes/" + str(row[0]) + ".npy", allow_pickle=True))
+    known_face_encodings.append(np.load("/opt/lampp/htdocs/uploads/faces_encodes/" + str(row[0]) + ".npy", allow_pickle=True))
     
     # alunos_ainda_nao_presentes.append(aluno["id"])
     row = cursor.fetchone()
@@ -83,21 +83,72 @@ while row:
 # pra depois dar alter table nos presentes (dentro do while)
 # for separado por causa do cursor.execute 
 for aluno in alunos_turma:
-    cursor.execute("insert into presenca (id_aluno, id_horario, presente, _date) values (%s, %s, %s, %s)", (aluno["id"], id_horario, 0, now.strftime("%Y-%m-%d")))
+    cursor.execute("insert into presencas (id_aluno, id_horario, present, _data) values (%s, %s, %s, %s)", (aluno["id"], id_horario, 0, now.strftime("%Y-%m-%d")))
 cursor.execute("commit")
 
 
 l = len(alunos_turma)
+
+# Initialize some variables for face recognition
+import cv2
+
+video = cv2.VideoCapture()
+
+# ip = "https://192.168.1.4:8080/video"
+# video.open(ip)
+
+
+RES = 1 # 1 to 10
+video_capture =   cv2.VideoCapture(0) #  video
+
+c= 0
+
+
+
 # while it's not the end of the period 
 # or if all the alunos are present
-while (now < end_time) or l == 0:
+while now < end_time and l != 0:
+    c+=1
     # here we make the attendance check by comparing the face encodings of the students with the face encodings of the faces in the camera
-    
-    
-    print(now)
-    
+    ret, frame = video_capture.read()
+
+    # process once per 10 frames
+    if c % 10 ==0:
+
+        # Resize frame of video to 1/4 size for faster face recognition processing
+        small_frame = cv2.resize(frame, (0, 0), fx=(10/RES)/10, fy=(10/RES)/10)
+
+        # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
+        rgb_small_frame = small_frame[:, :, ::-1]
+        
+        # Find all the faces and face encodings in the current frame of video
+        face_encodings = face_recognition.face_encodings(rgb_small_frame)
+
+        
+        for face_encoding in face_encodings:
+            face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+            if len(face_distances) == 0: # avoid some errors, altough it could be better implemented
+                continue
+            best_match_index = np.argmin(face_distances)
+            # print(alunos_turma[best_match_index]["nome"], " - ", face_distances[best_match_index])
+            
+            if face_distances[best_match_index] < 0.55: # and alunos_turma[best_match_index] in alunos_turma:
+
+                print(alunos_turma[best_match_index])
+                id = alunos_turma[best_match_index]["id"]
+                # removing both face and aluno from the list
+                alunos_turma.pop(best_match_index)
+                known_face_encodings.pop(best_match_index)
+                cursor.execute("update presencas set present = 1 where id_aluno = %s and id_horario = %s and _data=%s", (id, id_horario, now.strftime("%Y-%m-%d")))
+                cursor.execute("commit")
+                
+            
+
+
+    # time stuff
     now = datetime.datetime.now()
     l = len(alunos_turma)
+    # print("on loop! - ", l, " - ", now)
 print("fimm")
 
 
@@ -105,5 +156,5 @@ print("fimm")
 
 # cursor.close()
 cnx.close()
-
+video_capture.release()
 
