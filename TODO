@@ -1,0 +1,12 @@
+fazer todo o backend em PHP, junto com o front
+
+
+
+toda a comunicação POST deve ser feita usando application/x-www-form-urlencoded
+cuidar com sql injection, xss, csrf, broken authentication - KKKKKKKKK MEME NÉ
+middleware checando se a sessão tá autenticada
+
+
+sudo systemctl stop mysql.service &&
+sudo lsyncd -delay 1 -rsync /home/benjamin/Documents/Projetos-II/PHP/ /opt/lampp/htdocs/v1 &&
+sudo /opt/lampp/xampp start;
