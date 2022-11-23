@@ -9,6 +9,7 @@ if($big_data){
     foreach( $big_data as $id){
         if(strlen($id) > 0){
             require_once("../database/connect.php");
+            $q = mysqli_query($conn, "DELETE FROM zodak.presencas WHERE id_aluno='$id'");
             $q = mysqli_query($conn, "DELETE FROM zodak.alunos WHERE id='$id'");
             if (!$q) {
                 echo 'Could not run query: ';

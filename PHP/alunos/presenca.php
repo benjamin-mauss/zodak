@@ -144,6 +144,10 @@ n é preciso adição manual pq o proprio algoritmo do python adiciona faltas e 
             
         });
     }
+    setTimeout(function(){
+        location.reload()
+    }, 1000);
+    
 </script>
 </body>
 </html>

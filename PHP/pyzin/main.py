@@ -127,7 +127,7 @@ while now < end_time and l != 0:
 
         
         for face_encoding in face_encodings:
-            face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+            face_distances = face_recognition.face_distance(known_face_encodings, face_encoding, )
             if len(face_distances) == 0: # avoid some errors, altough it could be better implemented
                 continue
             best_match_index = np.argmin(face_distances)
@@ -158,4 +158,3 @@ print("fimm")
 # cursor.close()
 cnx.close()
 video_capture.release()
-
