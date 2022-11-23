@@ -1,0 +1,40 @@
+
+.navbarme{
+   background-color: #0727b7;
+}
+
+.containerNav{
+    justify-content: flex-start !important;
+}
+
+.containerNav a {
+    margin: 0 2%;
+    color: #ced1e1 !important;
+}
+
+body h2 {
+    font-size: 2.5em;
+    color: #0727b7;
+    font-family: Cambria, Times 'Times New Roman', serif !important;
+}
+
+.containerform{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5% 2%;
+}
+
+table{
+    width: 80% !important;
+    border: 1px;
+}
+
+.form-control{
+    margin: 2% 0;
+}
+
+.btnatt{
+    
+}

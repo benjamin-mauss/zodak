@@ -1,6 +1,4 @@
 
-
-
 <?php
 session_start();
 if (!isset($_SESSION['id'])){
@@ -15,13 +13,21 @@ if (!isset($_SESSION['id'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="index.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
 
-<a href="/v1/alunos">alunos</a><br>
-<a href="/v1/turmas">turmas</a><br>
-<a href="/v1/horarios">horarios</a><br>
+<nav class="navbar navbarme">
+  <div class="container-fluid containerNav">
+    <a class="navbar-brand" href="/v1/alunos">Alunos</a>
+    <a class="navbar-brand mb-0 h1" href="/v1/turmas">Turmas</a>
+    <a class="navbar-brand" href="/v1/horarios">Horarios</a>
+  </div>
+</nav>
+
+
 
 <?php
 
@@ -46,59 +52,55 @@ if($_POST){
 
 ?>
 
-<style>
-    table{
-        width:100%;
-    }
-</style>
 
-<h2>Adicione uma turma nova:</h2>
-<form action="" method="post">
-<br>
-    <input type="text" name="nome" id="nome" placeholder="nome"><br>
-    <input type="number" name="grade" id="grade" placeholder="grade"><br>
-    <button type="submit">adicionar</button>
-</form>
+<div class="containerform">
+    <h2>Turmas</h2>
+    <table class="table" contenteditable="true" id="table">
+        <tr  contenteditable="false">
+            <th>Ativo</th>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Grade</th>
+        </tr>
+        <?php
+        require_once("../database/connect.php");
+        $q = mysqli_query($conn, "SELECT * FROM zodak.turmas");
 
-<h2>Veja, edite ou delete a turmas:</h2>
-<table border="1px" contenteditable="true" id=table>
-    <tr  contenteditable="false">
-        <th>ativo</th>
-        <th>id</th>
-        <th>Nome</th>
-        <th>Grade</th>
-    </tr>
-    <?php
-    require_once("../database/connect.php");
-    $q = mysqli_query($conn, "SELECT * FROM zodak.turmas");
-    
-
-    if (!$q) {
-        echo 'Could not run query: ';
-        exit;
-    }
-    $row = mysqli_fetch_assoc($q);
-    while($row){
-        $id= $row["id"];
-        $nome = $row["nome"];
-        $grade = $row["grade"];
-        echo("<tr>
-        
-        <td contenteditable=false><input type='checkbox' id='$id' name='ativo' checked></td>
-        <td contenteditable=false>$id</td>
-        <td>$nome</td>
-        <td>$grade</td>
-        </tr>");
-
+        if (!$q) {
+            echo 'Could not run query: ';
+            exit;
+        }
         $row = mysqli_fetch_assoc($q);
-    }
-    
+        while($row){
+            $id= $row["id"];
+            $nome = $row["nome"];
+            $grade = $row["grade"];
+            echo("<tr>
+            
+            <td contenteditable=false><input type='checkbox' id='$id' name='ativo' checked></td>
+            <td contenteditable=false>$id</td>
+            <td>$nome</td>
+            <td>$grade</td>
+            </tr>");
 
-    ?>
-</table>
+            $row = mysqli_fetch_assoc($q);
+        }
+        
 
-<button type="submit" id="att">Atualizar turmas</button>
+        ?>
+    </table>
 
+    <button class="btnatt" type="submit" id="att">Atualizar turmas</button>
+</div>
+
+<div class="containerform">
+    <h2>Adicione uma turma nova:</h2>
+    <form action="" method="post">
+        <input type="text" name="nome" class="form-control" id="nome" placeholder="nome">
+        <input type="number" name="grade" class="form-control" id="grade" placeholder="grade">
+        <button type="submit">adicionar</button>
+    </form>
+</div>
 
 <script>
     document.getElementById("att").onclick = function(){
@@ -123,6 +125,7 @@ if($_POST){
         }
 
         // sends values to att.php
+
         var xhttp = new XMLHttpRequest();
         
         xhttp.open("POST", "/v1/turmas/att.php");
@@ -152,9 +155,7 @@ if($_POST){
 
     }
 </script>
-
-<br><br><br>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous" >
 
 
     </body>

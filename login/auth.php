@@ -19,12 +19,12 @@ $hash = md5($_POST['senha']);
 $mat = strtolower($_POST["login"]);
 
 var_dump($conn);
-$q = mysqli_query($conn, "SELECT * FROM zodak.admins WHERE matricula='{$_POST["login"]}' and hash_senha='$hash';");
+$q = mysqli_query($conn, "SELECT * FROM zodak.admins WHERE siape='{$_POST["login"]}' and hash_senha='$hash';");
 
 if ($q && (mysqli_num_rows($q) == 1)){
     $r=mysqli_fetch_assoc($q);
     $_SESSION['id'] = $r['id'];
-    $_SESSION['matricula'] = $r['matricula'];
+    $_SESSION['siape'] = $r['siape'];
     $_SESSION['nome'] = $r['nome'];
     header("Location: /v1/turmas?r=senha_correta");
     die();
