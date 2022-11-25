@@ -18,7 +18,7 @@ if (!isset($_SESSION['id'])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="../css/turmas.css" rel="stylesheet">
     <link href="../css/navbar.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Zodak</title>
 </head>
 <body>
 
@@ -40,7 +40,7 @@ if (!isset($_SESSION['id'])){
             <li class="nav-item dropdown">
               <a class="nav-link dropItemMe" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Turmas</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item dropItemMe" href="#">Turma</a></li>
+                <li><a class="dropdown-item dropItemMe" href="/v1/turmas">Turma</a></li>
                 <li><a class="dropdown-item dropItemMe" href="/v1/turmas/add.php">Adicionar Turma</a></li>
               </ul>
             </li>
@@ -51,7 +51,11 @@ if (!isset($_SESSION['id'])){
                 <li><a class="dropdown-item dropItemMe" href="/v1/horarios/add.php">Adicionar Horários</a></li>
               </ul>
               <li class="nav-item dropdown">
-              <a class="nav-link dropItemMe" href="/v1/alunos/presenca.php" >Presenças</a>
+              <a class="nav-link dropItemMe" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Presenças</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item dropItemMe" href="/v1/presencas">Presenças</a></li>
+                <li><a class="dropdown-item dropItemMe" href="/v1/presencas/att_presenca.php">Adicionar Presenças</a></li>
+              </ul> 
             </li>
             </li>
           </ul>
