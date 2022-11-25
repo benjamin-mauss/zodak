@@ -60,45 +60,6 @@ if (!isset($_SESSION['id'])){
     </div>
 </nav>
 
-
-
-
-
-
-<!-- <nav class="navbar navbarme">
-  <div class="container-fluid containerNav">
-    <a class="navbar-brand" href="/v1/alunos">Alunos</a>
-    <a class="navbar-brand mb-0 h1" href="/v1/turmas">Turmas</a>
-    <a class="navbar-brand" href="/v1/horarios">Horarios</a>
-  </div>
-</nav> -->
-
-
-
-<?php
-
-if($_POST){
-    if(strlen($_POST['grade']) > 0 && strlen($_POST['nome']) > 0){
-        
-        require_once("../database/connect.php");
-        $a = $_POST["grade"];
-        $b = $_POST["nome"];
-        
-        $q = mysqli_query($conn, "INSERT INTO zodak.turmas values (NULL, '$a', '$b')");
-        header("Location: /v1/turmas?r=Incluiu");
-        die();
-    }else{
-        header("Location: /v1/turmas?r=Erro_1");
-        die();
-    }
-    
-    header("Location: /v1/turmas?r=Erro_2");
-    die();
-}
-
-?>
-
-
 <div class="containerform">
     <h2>Turmas</h2>
     <table class="table" contenteditable="true" id="table">
@@ -137,15 +98,6 @@ if($_POST){
     </table>
 
     <button class="btnatt" type="submit" id="att">Atualizar turmas</button>
-</div>
-
-<div class="containerform">
-    <h2>Adicione uma turma nova:</h2>
-    <form action="" method="post">
-        <input type="text" name="nome" class="form-control" id="nome" placeholder="nome">
-        <input type="number" name="grade" class="form-control" id="grade" placeholder="grade">
-        <button type="submit">adicionar</button>
-    </form>
 </div>
 
 <script>
