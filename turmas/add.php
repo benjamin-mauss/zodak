@@ -24,7 +24,7 @@ if (!isset($_SESSION['id'])){
 
 <nav class="navbar navbar-expand-lg navbarme">
     <div class="container-fluid containerNav">
-        <a class="navbar-brand navTitle" href="#">ZODAK</a>
+      <a class="navbar-brand navTitle" href="/v1">ZODAK</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar\-toggler-icon"></span>
         </button>

@@ -24,7 +24,7 @@ if (!isset($_SESSION['id'])){
 
 <nav class="navbar navbar-expand-lg navbarme">
     <div class="container-fluid containerNav">
-        <a class="navbar-brand navTitle" href="#">ZODAK</a>
+      <a class="navbar-brand navTitle" href="/v1">ZODAK</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar\-toggler-icon"></span>
         </button>
@@ -65,7 +65,7 @@ if (!isset($_SESSION['id'])){
 
 
 <div class="containerform">
-    <h2>Turmas</h2>
+    <h2>TURMAS</h2>
     <table class="table" contenteditable="true" id="table">
         <tr  contenteditable="false">
             <th>Ativo</th>
@@ -101,7 +101,7 @@ if (!isset($_SESSION['id'])){
         ?>
     </table>
 
-    <button class="btnatt" type="submit" id="att">Atualizar turmas</button>
+    <button class="btnAtt" type="submit" id="att">Atualizar turmas</button>
 </div>
 
 <script>

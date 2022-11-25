@@ -57,3 +57,7 @@
      background-color:rgba(63, 19, 117, 0.93) !important;
      color:rgba(177, 139, 224, 0.93) !important;
  }
+
+ .navbarLogin {
+    justify-content: space-around !important;
+ }

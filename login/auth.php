@@ -5,13 +5,13 @@ require_once ("../database/connect.php");
 
 session_start();
 if (isset($_SESSION['id'])){
-    header("Location: /v1/turmas?r=Ja_logado");
+    header("Location: /v1?r=Ja_logado");
     die();
 }
 
 
 if (! $_POST || !$_POST["login"] || !$_POST["senha"]){
-    header("Location: /v1/login?r=Acesso_direto");
+    header("Location: /v1?r=Acesso_direto");
     die();
 }
 
@@ -26,10 +26,10 @@ if ($q && (mysqli_num_rows($q) == 1)){
     $_SESSION['id'] = $r['id'];
     $_SESSION['siape'] = $r['siape'];
     $_SESSION['nome'] = $r['nome'];
-    header("Location: /v1/turmas?r=senha_correta");
+    header("Location: /v1?r=senha_correta");
     die();
 }else{
-    header("Location: /v1/login?r=senha_errada");
+    header("Location: /v1?r=senha_errada");
     die();
 }
 
