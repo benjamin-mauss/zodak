@@ -1,6 +1,3 @@
-
-<!-- mudar de turmas para alunos (todos os endpoints) -->
-
 <?php
 session_start();
 if (!isset($_SESSION['id'])){
