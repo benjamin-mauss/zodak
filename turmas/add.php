@@ -54,7 +54,6 @@ if (!isset($_SESSION['id'])){
               <a class="nav-link dropItemMe" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Presenças</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item dropItemMe" href="/v1/presencas">Presenças</a></li>
-                <li><a class="dropdown-item dropItemMe" href="/v1/presencas/att_presenca.php">Adicionar Presenças</a></li>
               </ul> 
             </li>
             </li>
@@ -63,6 +62,8 @@ if (!isset($_SESSION['id'])){
         <a class="navbar-brand navLogout" href="/v1/login/logout.php">SAIR</a>
     </div>
 </nav>
+
+
 <?php
 
 if($_POST){
