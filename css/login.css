@@ -1,0 +1,72 @@
+
+html {
+    height: 100vh;
+    background-image: linear-gradient(180deg, rgba(63, 19, 117, 0.93), rgba(67,0,153,0.4)), url("../css/img/login.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+body{
+  background: none;
+}
+
+/* Título ZODAK */
+.login-main-text{
+  margin-top: 5%;
+  padding: 5%;
+  color: #FCFCFC;
+}
+
+.login-main-text h2{
+  font-size: 6rem;
+  margin-bottom: 0 !important;
+  font-weight: 600;
+}
+
+.login-main-text p{
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+/* Formulário de login */
+  
+.login-form {
+  margin: 0 5%;
+  width: 20% !important;
+  text-align: center;
+}
+
+.form-group  {
+  padding: 2% 0;
+}
+
+.form-group input  {
+  padding: 3%;
+  background-color: #d4cade91;
+  border-radius: 35px;
+  border: none;
+  text-align: center !important;
+  color: #32174dac !important;
+}
+input::placeholder{
+  color: #32174dac !important;
+  font-weight: 500;
+}
+
+.form-group input:focus {
+  background-color: #d4cade91;
+  font-weight: 500;
+  color: #32174dac !important;
+}
+
+
+.btn{
+  margin: 2%;
+  background-color: rgba(63, 19, 117, 0.93) !important;
+  color: #FCFCFC !important;
+  font-weight: 500;
+  border-radius: 35px;
+  width: 70%;
+}

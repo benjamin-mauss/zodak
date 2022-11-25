@@ -13,19 +13,65 @@ if (!isset($_SESSION['id'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href="index.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="../css/turmas.css" rel="stylesheet">
+    <link href="../css/navbar.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
 
-<nav class="navbar navbarme">
+<nav class="navbar navbar-expand-lg navbarme">
+    <div class="container-fluid containerNav">
+        <a class="navbar-brand navTitle" href="#">ZODAK</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar\-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse containerItemNav" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropItemMe" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Alunos</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item dropItemMe" href="/v1/alunos">Aluno</a></li>
+                <li><a class="dropdown-item dropItemMe" href="/v1/alunos/add.php">Adicionar Aluno</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropItemMe" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Turmas</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item dropItemMe" href="#">Turma</a></li>
+                <li><a class="dropdown-item dropItemMe" href="/v1/turmas/add.php">Adicionar Turma</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropItemMe" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Horários</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item dropItemMe" href="/v1/horarios">Horários</a></li>
+                <li><a class="dropdown-item dropItemMe" href="/v1/horarios/add.php">Adicionar Horários</a></li>
+              </ul>
+              <li class="nav-item dropdown">
+              <a class="nav-link dropItemMe" href="/v1/alunos/presenca.php" >Presenças</a>
+            </li>
+            </li>
+          </ul>
+        </div>
+        <a class="navbar-brand navLogout" href="/v1/login/logout.php">SAIR</a>
+    </div>
+</nav>
+
+
+
+
+
+
+<!-- <nav class="navbar navbarme">
   <div class="container-fluid containerNav">
     <a class="navbar-brand" href="/v1/alunos">Alunos</a>
     <a class="navbar-brand mb-0 h1" href="/v1/turmas">Turmas</a>
     <a class="navbar-brand" href="/v1/horarios">Horarios</a>
   </div>
-</nav>
+</nav> -->
 
 
 
