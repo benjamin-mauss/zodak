@@ -21,12 +21,12 @@ if (!isset($_SESSION['id'])){
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbarme">
+<nav class="navbar navbar-expand-lg navbar-dark navbarme">
     <div class="container-fluid containerNav">
       <a class="navbar-brand navTitle" href="/v1">ZODAK</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar\-toggler-icon"></span>
-        </button> 
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse containerItemNav" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">

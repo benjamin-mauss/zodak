@@ -22,11 +22,11 @@ if (!isset($_SESSION['id'])){
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbarme">
+<nav class="navbar navbar-expand-lg navbar-dark navbarme">
     <div class="container-fluid containerNav">
       <a class="navbar-brand navTitle" href="/v1">ZODAK</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar\-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse containerItemNav" id="navbarNavDropdown">
           <ul class="navbar-nav">
@@ -67,12 +67,15 @@ if (!isset($_SESSION['id'])){
 <div class="containerform">
     <h2>TURMAS</h2>
     <table class="table" contenteditable="true" id="table">
+      <thead>
         <tr  contenteditable="false">
             <th>Ativo</th>
             <th>ID</th>
             <th>Nome</th>
             <th>Grade</th>
         </tr>
+      </thead>
+      <tbody>
         <?php
         require_once("../database/connect.php");
         $q = mysqli_query($conn, "SELECT * FROM zodak.turmas");
@@ -99,6 +102,7 @@ if (!isset($_SESSION['id'])){
         
 
         ?>
+      </tbody>
     </table>
 
     <button class="btnAtt" type="submit" id="att">Atualizar turmas</button>
@@ -158,7 +162,5 @@ if (!isset($_SESSION['id'])){
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous" >
-
-
-    </body>
+  </body>
 </html>

@@ -1,13 +1,9 @@
-
-
-
 <?php
 session_start();
 if (!isset($_SESSION['id'])){
     header("Location: /v1/login?r=Nao_logado");
     die();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -19,17 +15,17 @@ if (!isset($_SESSION['id'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="../css/turmas.css" rel="stylesheet">
+    <link href="../css/horarios.css" rel="stylesheet">
     <link href="../css/navbar.css" rel="stylesheet">
     <title>Zodak</title>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbarme">
+<nav class="navbar navbar-expand-lg navbar-dark navbarme">
     <div class="container-fluid containerNav">
-    <a class="navbar-brand navTitle" href="/v1">ZODAK</a>
+      <a class="navbar-brand navTitle" href="/v1">ZODAK</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar\-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse containerItemNav" id="navbarNavDropdown">
           <ul class="navbar-nav">
@@ -66,67 +62,37 @@ if (!isset($_SESSION['id'])){
     </div>
 </nav>
 
+<div class="containerform">
+    <h2>HORÁRIOS</h2>
+    <table class="table" contenteditable="true" id="table">
+        <thead>
+            <tr  contenteditable="false">
+                <th>id</th>
+                <th>turma</th>
+                <th>periodo</th>
+                <th>dia_semana</th>
+                <th>inicio</th>
+                <th>fim</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            require_once("../database/connect.php");
 
-<?php
+            $q = mysqli_query($conn, "SELECT * FROM zodak.turmas");
+            
 
-if($_POST){
-    if(strlen($_POST['grade']) > 0 && strlen($_POST['nome']) > 0){
-        
-        require_once("../database/connect.php");
-        $a = $_POST["grade"];
-        $b = $_POST["nome"];
-        
-        $q = mysqli_query($conn, "INSERT INTO zodak.turmas values (NULL, '$a', '$b')");
-        header("Location: /v1/turmas?r=Incluiu");
-        die();
-    }else{
-        header("Location: /v1/turmas?r=Erro_1");
-        die();
-    }
-    
-    header("Location: /v1/turmas?r=Erro_2");
-    die();
-}
+            if (!$q) {
+                echo 'Could not run query: ';
+                exit;
+            }
+            $row = mysqli_fetch_assoc($q);
+            $rows = [];
+            while($row){
+                array_push($rows, $row);
 
-?>
-
-<style>
-    table{
-        width:100%;
-    }
-</style>
-
-
-<h2>Veja, edite ou delete os horarios:</h2>
-<table border="1px" contenteditable="true" id=table>
-    <tr  contenteditable="false">
-        <th>id</th>
-        <th>turma</th>
-        <th>periodo</th>
-        <th>dia_semana</th>
-        <th>inicio</th>
-        <th>fim</th>
-    </tr>
-    <?php
-    require_once("../database/connect.php");
-
-
-    $q = mysqli_query($conn, "SELECT * FROM zodak.turmas");
-    
-
-    if (!$q) {
-        echo 'Could not run query: ';
-        exit;
-    }
-    $row = mysqli_fetch_assoc($q);
-    $rows = [];
-    while($row){
-        array_push($rows, $row);
-
-        $row = mysqli_fetch_assoc($q);
-    }
-
-
+                $row = mysqli_fetch_assoc($q);
+            }
 
 
     $qq = mysqli_query($conn, " SELECT h.id, h.id_turma, h.periodo, h.dia_semana, h.inicio, h.fim, t.nome as turma FROM zodak.horarios  as h JOIN zodak.turmas as t on h.id_turma= t.id;");
@@ -159,8 +125,6 @@ if($_POST){
 
         
         foreach ($rows as $r) {
-
-            
             $t = "<option value=\"{$r["id"]}\" ";
             
             if($row["id_turma"] == $r["id"]){
@@ -169,6 +133,7 @@ if($_POST){
             $t.=">{$r["nome"]}</option>\n";
             $tt .=$t;
         }
+
         $ttb = "";
 
         for($f=0; $f<6; $f++){
@@ -203,12 +168,11 @@ if($_POST){
 
         $row = mysqli_fetch_assoc($qq);
     }
-    
-
     ?>
+    </tbody>
 </table>
 
-<button type="submit" id="att">Atualizar horarios</button>
+    <button class="btnAtt" type="submit" id="att">Atualizar horarios</button>
 
 <script>
     document.getElementById("att").onclick = function(){
@@ -253,9 +217,6 @@ if($_POST){
     }
 </script>
 
-<br><br><br>
-
-
-    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </body>
 </html>

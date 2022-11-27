@@ -1,6 +1,6 @@
 
 body{
-    background-image: linear-gradient(360deg,rgb(66, 24, 118), rgba(255, 255, 255, 0.564));
+    background-color: rgb(219, 198, 245);
     height: 100vh;
 }
 
@@ -22,25 +22,39 @@ body h2 {
 	transform: translate(-50%, -50%);
 }
 
+
+
 .table{
     width: 80% !important;
     border-collapse: collapse;
 	overflow: hidden;
 	box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
-.table:focus{
+.table tbody:focus{
     border: none;
 }
 
+.table:focus{
+    outline: thin dotted;
+        outline: 0px auto -webkit-focus-ring-color;
+        outline-offset: 0px;
+    }
+
 .table tbody {
 	background-color: rgba(255,255,255,0.2);
-	color: #fff;
+	color: rgb(28, 7, 53);
     text-align: center;
-    padding: 1rem 6rem !important;
+    padding: 1rem 8rem !important;
+}
+
+.table thead{
+    text-align: center;
+    color: #FCFCFC;
 }
 
 .table tr th {
 		background-color: rgb(66, 24, 118);
+        border: none;
 }
 
 tbody tr:hover {
@@ -49,7 +63,7 @@ tbody tr:hover {
 
 tbody td {
     position: relative;
-    padding: .8rem 6rem !important;
+    padding: .8rem 8rem !important;
 }
 
 tbody td:hover:before {

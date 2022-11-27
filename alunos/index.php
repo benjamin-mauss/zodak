@@ -5,6 +5,7 @@ if (!isset($_SESSION['id'])){
     die();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,17 +15,17 @@ if (!isset($_SESSION['id'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="../css/turmas.css" rel="stylesheet">
+    <link href="../css/alunos.css" rel="stylesheet">
     <link href="../css/navbar.css" rel="stylesheet">
     <title>Zodak</title>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbarme">
+<nav class="navbar navbar-expand-lg navbar-dark navbarme">
     <div class="container-fluid containerNav">
-        <a class="navbar-brand navTitle" href="/v1">ZODAK</a>
+      <a class="navbar-brand navTitle" href="/v1">ZODAK</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar\-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse containerItemNav" id="navbarNavDropdown">
           <ul class="navbar-nav">
@@ -61,8 +62,9 @@ if (!isset($_SESSION['id'])){
     </div>
 </nav>
 
-<h2 class='title'>Veja, delete ou edite os alunos</h2>
-<table class="table tableMe" contenteditable="true" id=table>
+<div class="containerform">
+    <h2>ALUNOS</h2>
+    <table class="table" contenteditable="true" id="table">
     <thead>
         <tr contenteditable="false">
             <th>Ativo</th>
@@ -72,7 +74,7 @@ if (!isset($_SESSION['id'])){
             <th>Turma</th>
         </tr>
     </thead>
-        <tbody class="table-group-divider">
+    <tbody>
         <?php
         require_once("../database/connect.php");
         
@@ -94,26 +96,19 @@ if (!isset($_SESSION['id'])){
         
         $q = mysqli_query($conn, "SELECT a.id, a.nome, a.matricula, a.id_turma, t.nome as turma FROM zodak.alunos as a INNER JOIN zodak.turmas as t on a.id_turma = t.id ; ");
         
-        
-
         if (!$q) {
             echo 'Could not run query: ';
             exit;
         }
         $row = mysqli_fetch_assoc($q);
-        
         while($row){
-            
             $id= $row["id"];
             $nome = $row["nome"];
             $matricula = $row["matricula"];
             $turma= $row["id_turma"];
             $tt = "";
 
-            
             foreach ($rows as $r) {
-
-                
                 $t = "<option value=\"{$r["id"]}\" ";
                 
                 if($row["id_turma"] == $r["id"]){
@@ -139,9 +134,8 @@ if (!isset($_SESSION['id'])){
     </tbody>
 </table>
 
-<button class="btn btn-info" type="submit" id="att">Atualizar alunos</button>
-
-
+    <button class="btnAtt" type="submit" id="att">Atualizar alunos</button>
+</div>
 <script>
     document.getElementById("att").onclick = function(){
         // extracts all the values of the table and sends to the server
@@ -194,9 +188,6 @@ if (!isset($_SESSION['id'])){
     }
 </script>
 
-<br><br><br>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </body>
 </html>
