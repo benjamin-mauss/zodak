@@ -27,11 +27,11 @@ body h2 {
 .formpesquisa div {
     display: flex;
     flex-direction: row;
-    text-align: center;
+    align-items: center;
 }
 
 .formpesquisa label {
-    margin: 0 1%;
+    margin: 0 3%;
 }
 
 .containerform{
@@ -99,11 +99,35 @@ tbody td:hover:before {
     z-index: -1;
 }
 
+.formpesquisa input  {
+    padding: 3%;
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 15px;
+    border: none;
+    text-align: center !important;
+    color: #32174dac !important;
+  }
+input::placeholder{
+    color: #32174d1b !important;
+    font-weight: 500;
+}
+  
+.formpesquisa input:focus {
+    background-color: #d4cade91;
+    font-weight: 500;
+    color: #32174dac !important;
+}
+
+.formpesquisa label {
+    color:rgba(63, 19, 117, 1);
+
+}
+
+
 .btnAtt {
     background-color: rgba(63, 19, 117, 1);
     color: #FCFCFC;
     padding: .6em 2em;
     border: none;
     border-radius: 30px;
-    margin-top: .5em;
 }

@@ -147,18 +147,18 @@ if (!isset($_SESSION['id'])){
         echo("<tr>
         <td contenteditable=false>$id</td>
         
-        <td contenteditable=false>
+        <td class=\"selectInput\" contenteditable=false>
             <select name=\"selectmma\">$tt
             </select>
         </td>
 
-        <td contenteditable=false>
+        <td class=\"selectInput\" contenteditable=false>
             <select name=\"selectuua\">
                 $ttb
             </select>
         </td>
 
-        <td contenteditable=false>
+        <td class=\"selectInput\" contenteditable=false>
         <select name=\"selectoaa\">
             $tta
         </select></td>

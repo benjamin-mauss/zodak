@@ -22,8 +22,6 @@ body h2 {
 	transform: translate(-50%, -50%);
 }
 
-
-
 .table{
     width: 80% !important;
     border-collapse: collapse;
@@ -85,4 +83,14 @@ tbody td:hover:before {
     border: none;
     border-radius: 30px;
     margin: 5%;
+}
+
+select {
+    background-color: rgba(255,255,255,0);
+    border: none;
+}
+
+select option {
+    background-color: rgba(63, 19, 117, 1);
+    color: #FCFCFC;
 }

@@ -66,11 +66,11 @@ if (!isset($_SESSION['id'])){
     <form class="formpesquisa" action="" method="get">
         <div>
             <label for="nome">Nome: </label>
-            <input type="text" name="nome" id="nome" placeholder="nome"><br>
+            <input type="text" name="nome" id="nome" placeholder=""><br>
         </div>
         <div>
             <label for="turma">Turma: </label>
-            <input type="text" name="turma" id="turma" placeholder="turma"><br>
+            <input type="text" name="turma" id="turma" placeholder=""><br>
         </div>
         <div>
             <label for="since">Since: </label>
@@ -175,7 +175,7 @@ if (!isset($_SESSION['id'])){
             var id = this.parentNode.parentNode.firstChild.innerHTML;
             var present = this.checked;
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/v1/alunos/att_presenca.php", true);
+            xhr.open("POST", "/v1/presencas/att_presenca.php", true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(JSON.stringify({id: id, present: present}));
             
