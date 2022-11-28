@@ -2,9 +2,9 @@
 import datetime
 import face_recognition
 import numpy as np
-import sys
+# import sys
 import mysql.connector
-import time
+# import time
 
 # conectar com o banco de dados para pegar os dados
 # rodar até acabar o perído
