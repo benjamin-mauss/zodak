@@ -16,7 +16,7 @@ if (!isset($_SESSION['id'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="../css/turmas.css" rel="stylesheet">
+    <link href="../css/add.css" rel="stylesheet">
     <link href="../css/navbar.css" rel="stylesheet">
     <title>Zodak</title>
 </head>
@@ -88,10 +88,10 @@ if($_POST){
 ?>
 
 <div class="containerform">
-    <h2>Adicione uma turma nova:</h2>
-    <form action="" method="post">
-        <input type="text" name="nome" class="form-control" id="nome" placeholder="nome">
-        <input type="number" name="grade" class="form-control" id="grade" placeholder="grade">
-        <button type="submit">adicionar</button>
-    </form>
+  <h2>ADICIONAR UMA NOVA TURMA</h2>
+  <form action="" method="post">
+    <input type="text" name="nome" id="nome" placeholder="Nome">
+    <input type="number" name="grade" id="grade" placeholder="Grade">
+    <button class="btnAtt" type="submit">adicionar</button>
+  </form>
 </div>

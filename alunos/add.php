@@ -15,7 +15,7 @@ if (!isset($_SESSION['id'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="../css/turmas.css" rel="stylesheet">
+    <link href="../css/add.css" rel="stylesheet">
     <link href="../css/navbar.css" rel="stylesheet">
     <title>Zodak</title>
 </head>
@@ -160,22 +160,18 @@ if($_POST){
         echo("deu erro no reconhecimento facial, então o aluno não foi adicionado e a imagem foi excluida!\n");
         unlink($target_file);
     }
-}
-
+    }
 }
 
 ?>
 
-<style>
-    table{
-        width:100%;
-    }
-</style>
-<form action="" method="post" enctype="multipart/form-data">
-<br>
-    <input type="text" name="nome" id="nome" placeholder="nome"><br>
-    <input type="matricula" name="matricula" id="matricula" placeholder="matricula"><br>
-    <select name="turma">
+
+<div class="containerform">
+  <h2>ADICIONAR UM NOVO ALUNO</h2>
+  <form action="" method="post" enctype="multipart/form-data">
+    <input type="text" name="nome" id="nome" placeholder="Nome">
+    <input type="matricula" name="matricula" id="matricula" placeholder="Matricula">
+    <select name="Turma">
     
     <?php
         require_once("../database/connect.php");
@@ -199,8 +195,7 @@ if($_POST){
         
         ?>
     </select>
-    <br>
     <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
-    <br><br>
-    <button type="submit">adicionar</button>
+    <button class="btnAtt" type="submit">Adicionar</button>
 </form>
+</div>
