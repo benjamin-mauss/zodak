@@ -17,10 +17,10 @@ if($big_data){
                 die();
             }
             echo("deletou_1");
-            if(unlink("C:\\xampp\\htdocs\\uploads\\faces_encodes\\$id.npy")){
+            if(unlink("/opt/lampp/htdocs/uploads/faces_encodes/$id.npy")){
                 echo("deletou_2");
             }
-            if(unlink("C:\\xampp\\htdocs\\uploads\\faces_imagens\\$id.png")){
+            if(unlink("/opt/lampp/htdocs/uploads/faces_imagens/$id.png")){
                 echo("deletou_3");
             }
             

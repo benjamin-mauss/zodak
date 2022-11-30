@@ -6,13 +6,13 @@ import numpy as np
 import sys
 
 
-PATH = "C:\\xampp\\htdocs\\uploads\\"
+PATH = "/opt/lampp/htdocs/uploads/"
 if len(sys.argv) == 2:
-    faceid = face_recognition.load_image_file(PATH+"faces_imagens\\"+sys.argv[1]+".png")
+    faceid = face_recognition.load_image_file(PATH+"faces_imagens/"+sys.argv[1]+".png")
     
     if faceid is not None:
         faceid = face_recognition.face_encodings(faceid)[0]
-        faceid.dump(PATH+"faces_encodes\\"+sys.argv[1] + ".npy")
+        faceid.dump(PATH+"faces_encodes/"+sys.argv[1] + ".npy")
         print("1")
     else:
         print("2")
