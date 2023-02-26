@@ -181,6 +181,10 @@ if (!isset($_SESSION['id'])){
             
         });
     }
+
+    // setTimeout(()=>{
+    //     location.reload()
+    // },1000)
 </script>
 
 </body>

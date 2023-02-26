@@ -146,13 +146,13 @@ if($_POST){
     // so we need to make it null
     $output = shell_exec('export LD_LIBRARY_PATH=""; python3 /opt/lampp/htdocs/v1/pyzin/extract_faceid.py ' . $id . ' 2>&1');
     if(trim($output)== 1){
-        echo("so far so good carai\n");
+        echo("looks good!\n");
         // agora adicionar o usuario no banco :)
         $sql = "INSERT INTO zodak.alunos VALUES ('$id', '{$_POST["nome"]}', '{$_POST["matricula"]}', '{$_POST["turma"]}');";
         
         $q = mysqli_query($conn, $sql);
         if($q){
-            echo("acho que deu certo!!!\n");
+            echo("alright, everything went fine!!!\n");
         }else{
             echo("se pa que deu errado!!!\n");
         }
@@ -171,7 +171,7 @@ if($_POST){
   <form action="" method="post" enctype="multipart/form-data">
     <input type="text" name="nome" id="nome" placeholder="Nome">
     <input type="matricula" name="matricula" id="matricula" placeholder="Matricula">
-    <select name="Turma">
+    <select name="turma">
     
     <?php
         require_once("../database/connect.php");
