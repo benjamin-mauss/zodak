@@ -13,3 +13,5 @@ The main goal of Zodak is to automate the entire school attendance process withi
 - **Endorsed by IFSUL:** After presenting the project to the Deputy Pro-rector of Research and Innovation at IFSUL and Director Marta Tessmann, they expressed strong interest in incubating the project at the campus incubator, highlighting their enthusiasm for implementing the system across the IFSul network.
 
 Zodak represents a cutting-edge solution that enhances educational institutions' attendance management, streamlining processes, and improving overall efficiency.
+
+![benjamin mauss and kellen kern](https://github.com/benjamin-mauss/Projetos-II/assets/86640585/7e5a53b6-fa74-4f78-b190-cc536ac38d0b)
