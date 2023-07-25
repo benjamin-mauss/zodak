@@ -9,7 +9,8 @@ Necessário antes de funcionar
 - Estar com Python3 funcionando e no PATH do sistema operacional
 - Instalar o requirements do python.
 - (OPCIONAL) Configuração CRONTAB Linux de acordo com os horários, para rodar o script nos momentos adequados. Utiliza este website como auxiliar: https://crontab.guru/
-pip install -r requirements.txt
+
+pip install -r ./setup/requirements.txt
 
 
 
